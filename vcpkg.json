@@ -1,0 +1,19 @@
+{
+  "dependencies": [
+    {
+      "name": "openvr",
+      "version>=": "1.23.7"
+    },
+    {
+      "name": "minhook",
+      "version>=": "1.3.3#4"
+    },
+    {
+      "name": "spdlog",
+      "version>=": "1.12.0"
+    }
+  ],
+  "name": "openvr-hooks",
+  "version": "0.0.1",
+  "builtin-baseline": "00360d60f52d61ae6b5bb030b688f58a736c40fa"
+}

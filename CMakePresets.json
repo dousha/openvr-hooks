@@ -1,0 +1,51 @@
+{
+  "version": 4,
+  "configurePresets": [
+    {
+      "name": "debug-vs17",
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+      "generator": "Visual Studio 17 2022",
+      "binaryDir": "${sourceDir}/cmake-build-${presetName}"
+    },
+    {
+      "name": "release-vs17",
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+      "generator": "Visual Studio 17 2022",
+      "binaryDir": "${sourceDir}/cmake-build-${presetName}"
+    },
+    {
+      "name": "release-vs15",
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+      "generator": "Visual Studio 15 2017",
+      "binaryDir": "${sourceDir}/cmake-build-${presetName}"
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "debug-all",
+      "configurePreset": "debug-vs17",
+      "jobs": 8,
+      "targets": [
+        "OpenVRHooks"
+      ],
+      "configuration": "Debug"
+    },
+    {
+      "name": "release-all",
+      "configurePreset": "release-vs17",
+      "jobs": 8,
+      "targets": [
+        "OpenVRHooks"
+      ],
+      "configuration": "RelWithDebInfo"
+    },
+    {
+      "name": "release-legacy",
+      "configurePreset": "release-vs15",
+      "jobs": 8,
+      "targets": [
+        "OpenVRHooks"
+      ]
+    }
+  ]
+}
