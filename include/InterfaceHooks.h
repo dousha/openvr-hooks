@@ -4,8 +4,8 @@
  * @date 2023/7/28
  */
 
-#ifndef HIGCALIBRE_INTERFACEHOOKS_H
-#define HIGCALIBRE_INTERFACEHOOKS_H
+#ifndef OPENVR_HOOK_INTERFACEHOOKS_H
+#define OPENVR_HOOK_INTERFACEHOOKS_H
 
 #include <memory>
 #include <string>
@@ -27,4 +27,4 @@ protected:
 };
 } // namespace hig
 
-#endif // HIGCALIBRE_INTERFACEHOOKS_H
+#endif // OPENVR_HOOK_INTERFACEHOOKS_H

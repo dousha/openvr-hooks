@@ -4,8 +4,8 @@
  * @date 2023/7/28
  */
 
-#ifndef HIGCALIBRE_COMMON_H
-#define HIGCALIBRE_COMMON_H
+#ifndef OPENVR_HOOK_COMMON_H
+#define OPENVR_HOOK_COMMON_H
 
 #include <openvr_driver.h>
 
@@ -70,4 +70,4 @@ template <typename T> struct HookedAddressMapEntry {
 extern void** GetVTable(void* ptr);
 } // namespace hig
 
-#endif // HIGCALIBRE_COMMON_H
+#endif // OPENVR_HOOK_COMMON_H

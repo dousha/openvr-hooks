@@ -97,7 +97,7 @@ std::shared_ptr<InterfaceHooks> VRServerDriverHostHooks::createHooks(
 void VRServerDriverHostHooks::TrackedDevicePoseUpdatedOriginal(
     void* ctx,
     uint32_t which,
-    const vr::DriverPose_t& nextPost,
+    vr::DriverPose_t& nextPost,
     uint32_t poseStructureSize) {
     trackedDevicePoseUpdatedHook.originalFunc(
         ctx, which, nextPost, poseStructureSize);
@@ -149,13 +149,13 @@ bool VRServerDriverHostHooks::trackedDeviceAdded(
 void VRServerDriverHostHooks::trackedDevicePoseUpdated(
     void* ctx,
     uint32_t which,
-    const vr::DriverPose_t& nextPose,
+    vr::DriverPose_t& nextPose,
     uint32_t poseStructureSize) {
     // for vive hmd, this function is called ~1118 times per second
     // for vive controller, this function is called ~368 times per second per
     // device thus this function must run fast (enough)
     auto poseCopy = nextPose;
-    if (eventConsumer->OnTrackedDevicePoseUpdated(
+    if (eventConsumer->OnTrackedDevicePoseUpdate(
             ctx, 4, which, poseCopy, poseStructureSize)) {
         trackedDevicePoseUpdatedHook.originalFunc(
             ctx, which, poseCopy, poseStructureSize);
@@ -207,7 +207,7 @@ void VRServerDriverHostHooks::trackedDeviceAxisUpdated(
     uint32_t axis,
     const vr::VRControllerAxis_t& state) {
     auto copy = state;
-    if (eventConsumer->OnTrackedDeviceAxisUpdated(ctx, 4, which, axis, copy)) {
+    if (eventConsumer->OnTrackedDeviceAxisUpdate(ctx, 4, which, axis, copy)) {
         trackedDeviceAxisUpdatedHook.originalFunc(ctx, which, axis, copy);
     }
 }
@@ -269,7 +269,7 @@ std::shared_ptr<InterfaceHooks> VRServerDriverHostHooks::createHooks(
 void VRServerDriverHostHooks::TrackedDevicePoseUpdatedOriginal(
     void* ctx,
     uint32_t which,
-    const vr::DriverPose_t& nextPost,
+    vr::DriverPose_t& nextPost,
     uint32_t poseStructureSize) {
     trackedDevicePoseUpdatedHook.originalFunc(
         ctx, which, nextPost, poseStructureSize);
@@ -301,7 +301,7 @@ void VRServerDriverHostHooks::trackedDevicePoseUpdated(
     // for vive controller, this function is called ~368 times per second per
     // device thus this function must run fast (enough)
     auto poseCopy = nextPose;
-    if (eventConsumer->OnTrackedDevicePoseUpdated(
+    if (eventConsumer->OnTrackedDevicePoseUpdate(
             ctx, 5, which, poseCopy, poseStructureSize)) {
         trackedDevicePoseUpdatedHook.originalFunc(
             ctx, which, poseCopy, poseStructureSize);
@@ -403,7 +403,7 @@ std::shared_ptr<InterfaceHooks> VRServerDriverHostHooks::createHooks(
 void VRServerDriverHostHooks::TrackedDevicePoseUpdatedOriginal(
     void* ctx,
     uint32_t which,
-    const vr::DriverPose_t& nextPost,
+    vr::DriverPose_t& nextPost,
     uint32_t poseStructureSize) {
     trackedDevicePoseUpdatedHook.originalFunc(
         ctx, which, nextPost, poseStructureSize);
@@ -435,7 +435,7 @@ void VRServerDriverHostHooks::trackedDevicePoseUpdated(
     // for vive controller, this function is called ~368 times per second per
     // device thus this function must run fast (enough)
     auto poseCopy = nextPose;
-    if (eventConsumer->OnTrackedDevicePoseUpdated(
+    if (eventConsumer->OnTrackedDevicePoseUpdate(
             ctx, 5, which, poseCopy, poseStructureSize)) {
         trackedDevicePoseUpdatedHook.originalFunc(
             ctx, which, poseCopy, poseStructureSize);

@@ -4,8 +4,8 @@
  * @date 2023/8/2
  */
 
-#ifndef HIGCALIBRE_VRSERVERDRIVERHOSTHOOKS_H
-#define HIGCALIBRE_VRSERVERDRIVERHOSTHOOKS_H
+#ifndef OPENVR_HOOK_VRSERVERDRIVERHOSTHOOKS_H
+#define OPENVR_HOOK_VRSERVERDRIVERHOSTHOOKS_H
 
 #include "common.h"
 #include "InterfaceHooks.h"
@@ -24,7 +24,7 @@ public:
 
     typedef void (*TrackedDevicePoseUpdated)(void*,
                                              uint32_t,
-                                             const vr::DriverPose_t&,
+                                             vr::DriverPose_t&,
                                              uint32_t);
 
     typedef void (*TrackedDeviceButtonMake)(void*,
@@ -59,7 +59,7 @@ public:
     static void TrackedDevicePoseUpdatedOriginal(
         void* ctx,
         uint32_t which,
-        const vr::DriverPose_t& nextPost,
+        vr::DriverPose_t& nextPost,
         uint32_t poseStructureSize);
 
     static void TrackedDeviceButtonMakeOriginal(void* ctx,
@@ -108,7 +108,7 @@ private:
 
     static void trackedDevicePoseUpdated(void* ctx,
                                          uint32_t which,
-                                         const vr::DriverPose_t& nextPose,
+                                         vr::DriverPose_t& nextPose,
                                          uint32_t poseStructureSize);
 
     static void trackedDeviceButtonMake(void* ctx,
@@ -160,7 +160,7 @@ public:
     static void TrackedDevicePoseUpdatedOriginal(
         void* ctx,
         uint32_t which,
-        const vr::DriverPose_t& nextPost,
+        vr::DriverPose_t& nextPost,
         uint32_t poseStructureSize);
 
 private:
@@ -210,7 +210,7 @@ public:
     static void TrackedDevicePoseUpdatedOriginal(
         void* ctx,
         uint32_t which,
-        const vr::DriverPose_t& nextPost,
+        vr::DriverPose_t& nextPost,
         uint32_t poseStructureSize);
 
 private:
@@ -240,4 +240,4 @@ private:
 
 } // namespace vrhook
 
-#endif // HIGCALIBRE_VRSERVERDRIVERHOSTHOOKS_H
+#endif // OPENVR_HOOK_VRSERVERDRIVERHOSTHOOKS_H

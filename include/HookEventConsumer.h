@@ -99,7 +99,7 @@ public:
         int version,
         vr::PropertyContainerHandle_t container,
         const char* name,
-        vr::VRInputComponentHandle_t* component)
+        const vr::VRInputComponentHandle_t* component)
         = 0;
 
     /**
@@ -119,7 +119,7 @@ public:
         int version,
         vr::PropertyContainerHandle_t container,
         const char* name,
-        vr::VRInputComponentHandle_t* component,
+        const vr::VRInputComponentHandle_t* component,
         vr::EVRScalarType scalarType,
         vr::EVRScalarUnits scalarUnits)
         = 0;
@@ -136,7 +136,7 @@ public:
     virtual void OnHapticComponentCreated(
         void* context,
         int version,
-        vr::PropertyContainerHandle_t container,
+        const vr::PropertyContainerHandle_t container,
         const char* name,
         vr::VRInputComponentHandle_t* component)
         = 0;
@@ -153,9 +153,9 @@ public:
     virtual bool OnBooleanComponentUpdate(
         void* context,
         int version,
-        vr::VRInputComponentHandle_t componentHandle,
-        bool value,
-        double timeOffset)
+        vr::VRInputComponentHandle_t& componentHandle,
+        bool& value,
+        double& timeOffset)
         = 0;
 
     /**
@@ -170,16 +170,16 @@ public:
     virtual bool OnScalarComponentUpdate(
         void* context,
         int version,
-        vr::VRInputComponentHandle_t componentHandle,
-        float value,
-        double timeOffset)
+        vr::VRInputComponentHandle_t& componentHandle,
+        float& value,
+        double& timeOffset)
         = 0;
 
-    virtual bool OnTrackedDevicePoseUpdated(void* context,
-                                            int version,
-                                            vr::TrackedDeviceIndex_t id,
-                                            const vr::DriverPose_t& pose,
-                                            uint32_t poseStructureSize)
+    virtual bool OnTrackedDevicePoseUpdate(void* context,
+                                           int version,
+                                           vr::TrackedDeviceIndex_t id,
+                                           vr::DriverPose_t& pose,
+                                           uint32_t poseStructureSize)
         = 0;
 
     virtual std::pair<std::shared_ptr<void>, uint32_t>
@@ -195,36 +195,36 @@ public:
     virtual bool OnTrackedDeviceButtonMake(void* context,
                                            int version,
                                            vr::TrackedDeviceIndex_t id,
-                                           vr::EVRButtonId button,
-                                           double timeOffset)
+                                           vr::EVRButtonId& button,
+                                           double& timeOffset)
         = 0;
 
     virtual bool OnTrackedDeviceButtonBreak(void* context,
                                             int version,
                                             vr::TrackedDeviceIndex_t id,
-                                            vr::EVRButtonId button,
-                                            double timeOffset)
+                                            vr::EVRButtonId& button,
+                                            double& timeOffset)
         = 0;
 
     virtual bool OnTrackedDeviceButtonContact(void* context,
                                               int version,
                                               vr::TrackedDeviceIndex_t id,
-                                              vr::EVRButtonId button,
-                                              double timeOffset)
+                                              vr::EVRButtonId& button,
+                                              double& timeOffset)
         = 0;
 
     virtual bool OnTrackedDeviceButtonRelease(void* context,
                                               int version,
                                               vr::TrackedDeviceIndex_t id,
-                                              vr::EVRButtonId button,
-                                              double timeOffset)
+                                              vr::EVRButtonId& button,
+                                              double& timeOffset)
         = 0;
 
-    virtual bool OnTrackedDeviceAxisUpdated(void* context,
-                                            int version,
-                                            vr::TrackedDeviceIndex_t id,
-                                            uint32_t axis,
-                                            vr::VRControllerAxis_t& value)
+    virtual bool OnTrackedDeviceAxisUpdate(void* context,
+                                           int version,
+                                           vr::TrackedDeviceIndex_t id,
+                                           uint32_t& axis,
+                                           vr::VRControllerAxis_t& value)
         = 0;
 #pragma endregion
 #pragma endregion

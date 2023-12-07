@@ -4,8 +4,8 @@
  * @date 2023/7/28
  */
 
-#ifndef HIGCALIBRE_VRDRIVERINPUTHOOKS_H
-#define HIGCALIBRE_VRDRIVERINPUTHOOKS_H
+#ifndef OPENVR_HOOK_VRDRIVERINPUTHOOKS_H
+#define OPENVR_HOOK_VRDRIVERINPUTHOOKS_H
 
 #include "InterfaceHooks.h"
 #include "common.h"
@@ -28,7 +28,10 @@ public:
     typedef vr::EVRInputError (*UpdateScalarComponent)(
         void*, vr::VRInputComponentHandle_t, float, double);
     typedef vr::EVRInputError (*CreateHapticComponent)(
-        void*, vr::PropertyContainerHandle_t, const char*, void*);
+        void*,
+        vr::PropertyContainerHandle_t,
+        const char*,
+        vr::VRInputComponentHandle_t*);
 
     static std::shared_ptr<InterfaceHooks> createHooks(void* ptr);
     ~VRDriverInputHooks() override;
@@ -83,6 +86,6 @@ private:
         vr::VRInputComponentHandle_t* component);
 };
 
-} // namespace hig
+} // namespace vrhook
 
-#endif // HIGCALIBRE_VRDRIVERINPUTHOOKS_H
+#endif // OPENVR_HOOK_VRDRIVERINPUTHOOKS_H

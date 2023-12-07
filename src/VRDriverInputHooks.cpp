@@ -175,4 +175,4 @@ vr::EVRInputError VRDriverInputHooks::UpdateScalarComponentOriginal(
         ctx, componentHandle, value, timeOffset);
 }
 
-} // namespace hig
+} // namespace vrhook

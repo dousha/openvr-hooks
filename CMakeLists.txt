@@ -26,4 +26,4 @@ add_library(OpenVRHooks STATIC
         include/logger.h
         include/HookEventConsumer.h)
 target_include_directories(OpenVRHooks PUBLIC include)
-target_link_libraries(OpenVRHooks PUBLIC OpenVR::OpenVR minhook::minhook spdlog::spdlog_header_only)
+target_link_libraries(OpenVRHooks PUBLIC OpenVR::OpenVR minhook::minhook PRIVATE spdlog::spdlog)
