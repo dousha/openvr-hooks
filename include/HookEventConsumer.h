@@ -191,29 +191,6 @@ public:
                                            uint32_t poseStructureSize)
         = 0;
 
-    /**
-     * @brief Called AFTER the position of a device is updated.
-     *
-     * This is useful for co-existing with other position-modifying addons,
-     * such as OpenVR Space Calibrator. We may have hooked the position update
-     * AFTER the other addon, so we need to call others' hooks.
-     *
-     * This, unfortunately, means we cannot cancel the update if we want to.
-     *
-     * This function will NOT be called if the update was cancelled.
-     *
-     * @param context Pointer to `this`
-     * @param version Interface version. Can be 4, 5, or 6.
-     * @param id OpenVR ID of the device
-     * @param pose New pose of the device
-     * @param poseStructureSize Size of the pose structure
-     */
-    virtual void OnTrackedDevicePoseUpdated(void* context,
-                                            int version,
-                                            vr::TrackedDeviceIndex_t id,
-                                            vr::DriverPose_t& pose,
-                                            uint32_t poseStructureSize) { }
-
     virtual std::pair<std::shared_ptr<void>, uint32_t>
     GetDriverEventForInjection(void* serverDriverHost) = 0;
 

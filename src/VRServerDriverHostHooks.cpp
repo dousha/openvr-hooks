@@ -159,8 +159,6 @@ void VRServerDriverHostHooks::trackedDevicePoseUpdated(
             ctx, 4, which, poseCopy, poseStructureSize)) {
         trackedDevicePoseUpdatedHook.originalFunc(
             ctx, which, poseCopy, poseStructureSize);
-        eventConsumer->OnTrackedDevicePoseUpdated(
-            ctx, 4, which, poseCopy, poseStructureSize);
     }
 }
 
@@ -307,8 +305,6 @@ void VRServerDriverHostHooks::trackedDevicePoseUpdated(
             ctx, 5, which, poseCopy, poseStructureSize)) {
         trackedDevicePoseUpdatedHook.originalFunc(
             ctx, which, poseCopy, poseStructureSize);
-        eventConsumer->OnTrackedDevicePoseUpdated(
-            ctx, 5, which, poseCopy, poseStructureSize);
     }
 }
 
@@ -443,8 +439,6 @@ void VRServerDriverHostHooks::trackedDevicePoseUpdated(
             ctx, 6, which, poseCopy, poseStructureSize)) {
         trackedDevicePoseUpdatedHook.originalFunc(
             ctx, which, poseCopy, poseStructureSize);
-        eventConsumer->OnTrackedDevicePoseUpdated(
-            ctx, 6, which, poseCopy, poseStructureSize);
     }
 }
 
