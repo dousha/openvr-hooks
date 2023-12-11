@@ -159,6 +159,8 @@ void VRServerDriverHostHooks::trackedDevicePoseUpdated(
             ctx, 4, which, poseCopy, poseStructureSize)) {
         trackedDevicePoseUpdatedHook.originalFunc(
             ctx, which, poseCopy, poseStructureSize);
+        eventConsumer->OnTrackedDevicePoseUpdated(
+            ctx, 4, which, poseCopy, poseStructureSize);
     }
 }
 
@@ -305,6 +307,8 @@ void VRServerDriverHostHooks::trackedDevicePoseUpdated(
             ctx, 5, which, poseCopy, poseStructureSize)) {
         trackedDevicePoseUpdatedHook.originalFunc(
             ctx, which, poseCopy, poseStructureSize);
+        eventConsumer->OnTrackedDevicePoseUpdated(
+            ctx, 5, which, poseCopy, poseStructureSize);
     }
 }
 
@@ -436,9 +440,11 @@ void VRServerDriverHostHooks::trackedDevicePoseUpdated(
     // device thus this function must run fast (enough)
     auto poseCopy = nextPose;
     if (eventConsumer->OnTrackedDevicePoseUpdate(
-            ctx, 5, which, poseCopy, poseStructureSize)) {
+            ctx, 6, which, poseCopy, poseStructureSize)) {
         trackedDevicePoseUpdatedHook.originalFunc(
             ctx, which, poseCopy, poseStructureSize);
+        eventConsumer->OnTrackedDevicePoseUpdated(
+            ctx, 6, which, poseCopy, poseStructureSize);
     }
 }
 
