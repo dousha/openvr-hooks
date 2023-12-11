@@ -229,31 +229,41 @@ public:
                                            int version,
                                            vr::TrackedDeviceIndex_t id,
                                            vr::EVRButtonId& button,
-                                           double& timeOffset) { }
+                                           double& timeOffset) {
+        return true;
+    }
 
     virtual bool OnTrackedDeviceButtonBreak(void* context,
                                             int version,
                                             vr::TrackedDeviceIndex_t id,
                                             vr::EVRButtonId& button,
-                                            double& timeOffset) { }
+                                            double& timeOffset) {
+        return true;
+    }
 
     virtual bool OnTrackedDeviceButtonContact(void* context,
                                               int version,
                                               vr::TrackedDeviceIndex_t id,
                                               vr::EVRButtonId& button,
-                                              double& timeOffset) { }
+                                              double& timeOffset) {
+        return true;
+    }
 
     virtual bool OnTrackedDeviceButtonRelease(void* context,
                                               int version,
                                               vr::TrackedDeviceIndex_t id,
                                               vr::EVRButtonId& button,
-                                              double& timeOffset) { }
+                                              double& timeOffset) {
+        return true;
+    }
 
     virtual bool OnTrackedDeviceAxisUpdate(void* context,
                                            int version,
                                            vr::TrackedDeviceIndex_t id,
                                            uint32_t& axis,
-                                           vr::VRControllerAxis_t& value) { }
+                                           vr::VRControllerAxis_t& value) {
+        return true;
+    }
 
 #pragma endregion
 #pragma endregion
