@@ -192,40 +192,37 @@ public:
         = 0;
 
 #pragma region Legacy support
+
     virtual bool OnTrackedDeviceButtonMake(void* context,
                                            int version,
                                            vr::TrackedDeviceIndex_t id,
                                            vr::EVRButtonId& button,
-                                           double& timeOffset)
-        = 0;
+                                           double& timeOffset) { }
 
     virtual bool OnTrackedDeviceButtonBreak(void* context,
                                             int version,
                                             vr::TrackedDeviceIndex_t id,
                                             vr::EVRButtonId& button,
-                                            double& timeOffset)
-        = 0;
+                                            double& timeOffset) { }
 
     virtual bool OnTrackedDeviceButtonContact(void* context,
                                               int version,
                                               vr::TrackedDeviceIndex_t id,
                                               vr::EVRButtonId& button,
-                                              double& timeOffset)
-        = 0;
+                                              double& timeOffset) { }
 
     virtual bool OnTrackedDeviceButtonRelease(void* context,
                                               int version,
                                               vr::TrackedDeviceIndex_t id,
                                               vr::EVRButtonId& button,
-                                              double& timeOffset)
-        = 0;
+                                              double& timeOffset) { }
 
     virtual bool OnTrackedDeviceAxisUpdate(void* context,
                                            int version,
                                            vr::TrackedDeviceIndex_t id,
                                            uint32_t& axis,
-                                           vr::VRControllerAxis_t& value)
-        = 0;
+                                           vr::VRControllerAxis_t& value) { }
+
 #pragma endregion
 #pragma endregion
 };
