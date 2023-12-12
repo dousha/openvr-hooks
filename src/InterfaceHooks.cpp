@@ -60,4 +60,17 @@ void InterfaceHooks::SetEventConsumer(HookEventConsumer* consumer) {
     eventConsumer = consumer;
 }
 
+bool InterfaceHooks::InitHooks() {
+    auto hookError = MH_Initialize();
+    if (hookError != MH_OK) {
+        return false;
+    }
+
+    return true;
+}
+
+void InterfaceHooks::CleanUpHooks() {
+    MH_Uninitialize();
+}
+
 } // namespace vrhook
