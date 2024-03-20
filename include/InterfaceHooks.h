@@ -52,8 +52,11 @@ public:
      */
     static void SetEventConsumer(HookEventConsumer* consumer);
 
+    static int GetHookErrorCode();
+
 protected:
     static HookEventConsumer* eventConsumer;
+    static int hookErrorCode;
 };
 } // namespace vrhook
 

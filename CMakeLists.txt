@@ -3,9 +3,10 @@ project(OpenVRHooks CXX)
 set(CMAKE_CXX_STANDARD 11)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}")
-find_package(OpenVR REQUIRED)
-find_package(minhook REQUIRED)
+
 find_package(spdlog CONFIG REQUIRED)
+
+add_subdirectory(minhook)
 
 add_library(OpenVRHooks STATIC
         src/common.cpp
@@ -26,4 +27,4 @@ add_library(OpenVRHooks STATIC
         include/logger.h
         include/HookEventConsumer.h)
 target_include_directories(OpenVRHooks PUBLIC include)
-target_link_libraries(OpenVRHooks PUBLIC OpenVR::OpenVR minhook::minhook PRIVATE spdlog::spdlog)
+target_link_libraries(OpenVRHooks PUBLIC spdlog::spdlog PRIVATE minhook)
