@@ -56,11 +56,10 @@ public:
 
     ~VRServerDriverHostHooks() override;
 
-    static void TrackedDevicePoseUpdatedOriginal(
-        void* ctx,
-        uint32_t which,
-        vr::DriverPose_t& nextPost,
-        uint32_t poseStructureSize);
+    static void TrackedDevicePoseUpdatedOriginal(void* ctx,
+                                                 uint32_t which,
+                                                 vr::DriverPose_t& nextPost,
+                                                 uint32_t poseStructureSize);
 
     static void TrackedDeviceButtonMakeOriginal(void* ctx,
                                                 uint32_t which,
@@ -157,14 +156,13 @@ public:
 
     ~VRServerDriverHostHooks() override;
 
-    static void TrackedDevicePoseUpdatedOriginal(
-        void* ctx,
-        uint32_t which,
-        vr::DriverPose_t& nextPost,
-        uint32_t poseStructureSize);
+    static void TrackedDevicePoseUpdatedOriginal(void* ctx,
+                                                 uint32_t which,
+                                                 vr::DriverPose_t& nextPost,
+                                                 uint32_t poseStructureSize);
 
 private:
-    bool isHooked = false;
+    std::atomic_bool isHooked{false};
 
     explicit VRServerDriverHostHooks(void* ptr);
 
@@ -207,14 +205,13 @@ public:
 
     ~VRServerDriverHostHooks() override;
 
-    static void TrackedDevicePoseUpdatedOriginal(
-        void* ctx,
-        uint32_t which,
-        vr::DriverPose_t& nextPost,
-        uint32_t poseStructureSize);
+    static void TrackedDevicePoseUpdatedOriginal(void* ctx,
+                                                 uint32_t which,
+                                                 vr::DriverPose_t& nextPost,
+                                                 uint32_t poseStructureSize);
 
 private:
-    bool isHooked = false;
+    std::atomic_bool isHooked{false};
 
     explicit VRServerDriverHostHooks(void* ptr);
 

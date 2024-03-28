@@ -238,11 +238,13 @@ VRServerDriverHostHooks::VRServerDriverHostHooks(void* ptr) {
                "hook5::VRServerDriverHostHooks::TrackedDevicePoseUpdated",
                ptr,
                1);
+#ifdef OPENVR_HOOKS_ENABLE_EVENT_POLL_HOOK
     CreateHook(pollNextEventHook,
                reinterpret_cast<void*>(pollNextEvent),
                "hook5::VRServerDriverHostHooks::PollNextEvent",
                ptr,
                5);
+#endif
     isHooked = true;
 }
 
@@ -257,7 +259,9 @@ VRServerDriverHostHooks::~VRServerDriverHostHooks() {
     ObtainLogger()->debug("Unhooking IVRServerDriverHost_005");
     RemoveHook(trackedDeviceAddedHook);
     RemoveHook(trackedDevicePoseUpdatedHook);
+#ifdef OPENVR_HOOKS_ENABLE_EVENT_POLL_HOOK
     RemoveHook(pollNextEventHook);
+#endif
     isHooked = false;
 }
 
@@ -308,6 +312,7 @@ void VRServerDriverHostHooks::trackedDevicePoseUpdated(
     }
 }
 
+[[maybe_unused]]
 bool VRServerDriverHostHooks::pollNextEvent(void* ctx,
                                             vr::VREvent_t* event,
                                             uint32_t eventSize) {
@@ -372,11 +377,13 @@ VRServerDriverHostHooks::VRServerDriverHostHooks(void* ptr) {
                "hook6::VRServerDriverHostHooks::TrackedDevicePoseUpdated",
                ptr,
                1);
+#ifdef OPENVR_HOOKS_ENABLE_EVENT_POLL_HOOK
     CreateHook(pollNextEventHook,
                reinterpret_cast<void*>(pollNextEvent),
                "hook6::VRServerDriverHostHooks::PollNextEvent",
                ptr,
                5);
+#endif
     isHooked = true;
 }
 
@@ -391,7 +398,9 @@ VRServerDriverHostHooks::~VRServerDriverHostHooks() {
     ObtainLogger()->debug("Unhooking IVRServerDriverHost_006");
     RemoveHook(trackedDeviceAddedHook);
     RemoveHook(trackedDevicePoseUpdatedHook);
+#ifdef OPENVR_HOOKS_ENABLE_EVENT_POLL_HOOK
     RemoveHook(pollNextEventHook);
+#endif
     isHooked = false;
 }
 

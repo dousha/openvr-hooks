@@ -194,11 +194,30 @@ public:
     virtual std::pair<std::shared_ptr<void>, uint32_t>
     GetDriverEventForInjection(void* serverDriverHost) = 0;
 
+    /**
+     * @brief Called when the next event is about to be polled.
+     * @param context Pointer to `this`
+     * @param version Interface version. Can be 4, 5, or 6.
+     * @param event The event that is being polled.
+     * @param sizeOfEvent The size of the event structure
+     * @return `true` if the event should be polled, `false` otherwise.
+     * @attention Due to crashes when Vive Streaming Hub is installed, the event
+     * polling is not enabled by default. Define the macro
+     * `OPENVR_HOOKS_ENABLE_EVENT_POLL_HOOK` to enable the event polling.
+     *
+     * This function is no longer mandatory to implement due to this change.
+     */
     virtual bool OnPollNextEvent(void* context,
                                  int version,
                                  vr::VREvent_t* event,
                                  uint32_t sizeOfEvent)
-        = 0;
+#ifdef OPENVR_HOOKS_ENABLE_EVENT_POLL_HOOK
+        ;
+#else
+    {
+        return true;
+    }
+#endif
 
 #pragma region Legacy support
 
