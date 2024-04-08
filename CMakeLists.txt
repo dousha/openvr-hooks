@@ -26,5 +26,5 @@ add_library(OpenVRHooks STATIC
         src/logger.cpp
         include/logger.h
         include/HookEventConsumer.h)
-target_include_directories(OpenVRHooks PUBLIC include)
+target_include_directories(OpenVRHooks PUBLIC include ${CMAKE_CURRENT_SOURCE_DIR}/minhook/include)
 target_link_libraries(OpenVRHooks PUBLIC spdlog::spdlog PRIVATE minhook)
