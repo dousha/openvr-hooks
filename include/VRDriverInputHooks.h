@@ -48,7 +48,7 @@ public:
         double timeOffset);
 
 private:
-    bool isHooked = false;
+    std::atomic_bool isHooked{false};
     explicit VRDriverInputHooks(void* ptr);
 
     static HookData<CreateBooleanComponent> createBooleanComponentHook;

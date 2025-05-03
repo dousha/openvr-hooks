@@ -15,6 +15,7 @@
 namespace vrhook {
 
 HookEventConsumer* InterfaceHooks::eventConsumer = nullptr;
+int InterfaceHooks::hookErrorCode = 0;
 
 std::shared_ptr<InterfaceHooks> vrhook::InterfaceHooks::HookInterface(
     void* interfaceRef, const std::string& interfaceVersion) {
@@ -58,6 +59,24 @@ std::shared_ptr<InterfaceHooks> vrhook::InterfaceHooks::HookInterface(
 
 void InterfaceHooks::SetEventConsumer(HookEventConsumer* consumer) {
     eventConsumer = consumer;
+}
+
+bool InterfaceHooks::InitHooks() {
+    auto hookError = MH_Initialize();
+    hookErrorCode = hookError;
+    if (hookError != MH_OK) {
+        return false;
+    }
+
+    return true;
+}
+
+void InterfaceHooks::CleanUpHooks() {
+    MH_Uninitialize();
+}
+
+int InterfaceHooks::GetHookErrorCode() {
+    return hookErrorCode;
 }
 
 } // namespace vrhook
